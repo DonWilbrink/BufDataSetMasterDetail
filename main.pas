@@ -22,6 +22,7 @@ type
     DBNavigator1: TDBNavigator;
     DBNavigator2: TDBNavigator;
     procedure bdsPlatenAfterPost(DataSet: TDataSet);
+    procedure bdsPlatenBeforeInsert(DataSet: TDataSet);
     procedure bdsTracksAfterPost(DataSet: TDataSet);
     procedure bdsTracksFilterRecord(DataSet: TDataSet; var Accept: Boolean);
     procedure DBNavigator1Click(Sender: TObject; Button: TDBNavButtonType);
@@ -89,14 +90,19 @@ end;
 
 procedure TmainForm.bdsTracksAfterPost(DataSet: TDataSet);
 begin
-  //bdsTracks.ApplyUpdates;
   bdsTracks.First;
 end;
 
 procedure TmainForm.bdsPlatenAfterPost(DataSet: TDataSet);
 begin
-  //bdsPlaten.ApplyUpdates;
-  bdsPlaten.First;
+  bdsTracks.Filtered := False;
+  bdsTracks.Filtered := True;
+  bdsTracks.First;
+end;
+
+procedure TmainForm.bdsPlatenBeforeInsert(DataSet: TDataSet);
+begin
+  DBGrid2.Clear;
 end;
 
 procedure TmainForm.DBNavigator1Click(Sender: TObject; Button: TDBNavButtonType
