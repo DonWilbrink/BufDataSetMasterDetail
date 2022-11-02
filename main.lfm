@@ -1,19 +1,18 @@
 object mainForm: TmainForm
   Left = 404
-  Height = 659
+  Height = 527
   Top = 31
-  Width = 1164
+  Width = 931
   Caption = 'Platen overzicht'
-  ClientHeight = 659
-  ClientWidth = 1164
-  DesignTimePPI = 120
+  ClientHeight = 527
+  ClientWidth = 931
   OnClose = FormClose
   OnCreate = FormCreate
   object DBNavigator1: TDBNavigator
-    Left = 10
-    Height = 31
-    Top = 10
-    Width = 301
+    Left = 8
+    Height = 25
+    Top = 8
+    Width = 241
     BevelOuter = bvNone
     ChildSizing.EnlargeHorizontal = crsScaleChilds
     ChildSizing.EnlargeVertical = crsScaleChilds
@@ -21,18 +20,18 @@ object mainForm: TmainForm
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 100
-    ClientHeight = 31
-    ClientWidth = 301
+    ClientHeight = 25
+    ClientWidth = 241
     DataSource = dsPlaten
     OnClick = DBNavigator1Click
     Options = []
     TabOrder = 0
   end
   object DBGrid1: TDBGrid
-    Left = 10
-    Height = 255
-    Top = 50
-    Width = 1140
+    Left = 8
+    Height = 204
+    Top = 40
+    Width = 912
     Anchors = [akTop, akLeft, akRight, akBottom]
     Color = clWindow
     Columns = <>
@@ -40,10 +39,10 @@ object mainForm: TmainForm
     TabOrder = 1
   end
   object DBNavigator2: TDBNavigator
-    Left = 10
-    Height = 31
-    Top = 326
-    Width = 301
+    Left = 8
+    Height = 25
+    Top = 260
+    Width = 241
     Anchors = [akLeft, akBottom]
     BevelOuter = bvNone
     ChildSizing.EnlargeHorizontal = crsScaleChilds
@@ -52,17 +51,17 @@ object mainForm: TmainForm
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 100
-    ClientHeight = 31
-    ClientWidth = 301
+    ClientHeight = 25
+    ClientWidth = 241
     DataSource = dsTracks
     Options = []
     TabOrder = 2
   end
   object DBGrid2: TDBGrid
-    Left = 10
-    Height = 250
-    Top = 370
-    Width = 1140
+    Left = 8
+    Height = 200
+    Top = 296
+    Width = 912
     Anchors = [akLeft, akRight, akBottom]
     Color = clWindow
     Columns = <>
@@ -88,8 +87,8 @@ object mainForm: TmainForm
       end>
     AfterPost = bdsPlatenAfterPost
     BeforeInsert = bdsPlatenBeforeInsert
-    Left = 1079
-    Top = 598
+    Left = 863
+    Top = 478
   end
   object bdsTracks: TBufDataset
     IndexFieldNames = 'ID'
@@ -109,18 +108,19 @@ object mainForm: TmainForm
       end>
     Filtered = True
     AfterPost = bdsTracksAfterPost
+    BeforePost = bdsTracksBeforePost
     OnFilterRecord = bdsTracksFilterRecord
-    Left = 966
-    Top = 598
+    Left = 773
+    Top = 478
   end
   object dsPlaten: TDataSource
     DataSet = bdsPlaten
-    Left = 1080
-    Top = 510
+    Left = 864
+    Top = 408
   end
   object dsTracks: TDataSource
     DataSet = bdsTracks
-    Left = 966
-    Top = 510
+    Left = 773
+    Top = 408
   end
 end

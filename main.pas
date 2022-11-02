@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, BufDataset, DB, Forms, Controls, Graphics, Dialogs,
-  DBCtrls, DBGrids, StdCtrls;
+  DBCtrls, DBGrids;
 
 type
 
@@ -24,6 +24,7 @@ type
     procedure bdsPlatenAfterPost(DataSet: TDataSet);
     procedure bdsPlatenBeforeInsert(DataSet: TDataSet);
     procedure bdsTracksAfterPost(DataSet: TDataSet);
+    procedure bdsTracksBeforePost(DataSet: TDataSet);
     procedure bdsTracksFilterRecord(DataSet: TDataSet; var Accept: Boolean);
     procedure DBNavigator1Click(Sender: TObject; Button: TDBNavButtonType);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -91,6 +92,11 @@ end;
 procedure TmainForm.bdsTracksAfterPost(DataSet: TDataSet);
 begin
   bdsTracks.First;
+end;
+
+procedure TmainForm.bdsTracksBeforePost(DataSet: TDataSet);
+begin
+  bdsTracks.FieldByName('AlbumID').Value := bdsPlaten.FieldByName('ID').Value;
 end;
 
 procedure TmainForm.bdsPlatenAfterPost(DataSet: TDataSet);
