@@ -26,6 +26,7 @@ object mainForm: TmainForm
     OnClick = DBNavigator1Click
     Options = []
     TabOrder = 0
+    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
   end
   object DBGrid1: TDBGrid
     Left = 8
@@ -56,6 +57,7 @@ object mainForm: TmainForm
     DataSource = dsTracks
     Options = []
     TabOrder = 2
+    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbPost, nbCancel]
   end
   object DBGrid2: TDBGrid
     Left = 8
@@ -67,6 +69,15 @@ object mainForm: TmainForm
     Columns = <>
     DataSource = dsTracks
     TabOrder = 3
+  end
+  object btnReport: TButton
+    Left = 336
+    Height = 25
+    Top = 8
+    Width = 75
+    Caption = 'Overzicht'
+    OnClick = btnReportClick
+    TabOrder = 4
   end
   object bdsPlaten: TBufDataset
     IndexFieldNames = 'ID'
@@ -122,5 +133,25 @@ object mainForm: TmainForm
     DataSet = bdsTracks
     Left = 773
     Top = 408
+  end
+  object frReport1: TfrReport
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit, pbSettings, pbPageSetup]
+    DataType = dtDataSet
+    Left = 411
+    Top = 410
+  end
+  object frDBDataSet1: TfrDBDataSet
+    DataSet = bdsPlaten
+    DataSource = dsPlaten
+    Left = 499
+    Top = 410
+  end
+  object frDBDataSet2: TfrDBDataSet
+    DataSet = bdsTracks
+    DataSource = dsTracks
+    Left = 599
+    Top = 410
   end
 end
