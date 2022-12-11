@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, BufDataset, DB, Forms, Controls, Graphics, Dialogs,
-  DBCtrls, DBGrids;
+  DBCtrls, DBGrids, StdCtrls, LR_Class, LR_DBSet;
 
 type
 
@@ -15,17 +15,22 @@ type
   TmainForm = class(TForm)
     bdsPlaten: TBufDataset;
     bdsTracks: TBufDataset;
+    btnReport: TButton;
     dsPlaten: TDataSource;
     dsTracks: TDataSource;
     DBGrid1: TDBGrid;
     DBGrid2: TDBGrid;
     DBNavigator1: TDBNavigator;
     DBNavigator2: TDBNavigator;
+    frDBDataSet1: TfrDBDataSet;
+    frDBDataSet2: TfrDBDataSet;
+    frReport1: TfrReport;
     procedure bdsPlatenAfterPost(DataSet: TDataSet);
     procedure bdsPlatenBeforeInsert(DataSet: TDataSet);
     procedure bdsTracksAfterPost(DataSet: TDataSet);
     procedure bdsTracksBeforePost(DataSet: TDataSet);
     procedure bdsTracksFilterRecord(DataSet: TDataSet; var Accept: Boolean);
+    procedure btnReportClick(Sender: TObject);
     procedure DBNavigator1Click(Sender: TObject; Button: TDBNavButtonType);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -87,6 +92,12 @@ procedure TmainForm.bdsTracksFilterRecord(DataSet: TDataSet; var Accept: Boolean
   );
 begin
   Accept := (bdsTracks.FieldByName('AlbumID').AsInteger = bdsPlaten.FieldByName('ID').AsInteger);
+end;
+
+procedure TmainForm.btnReportClick(Sender: TObject);
+begin
+  frReport1.LoadFromFile('overzicht.lrf');
+  frReport1.ShowReport;
 end;
 
 procedure TmainForm.bdsTracksAfterPost(DataSet: TDataSet);
